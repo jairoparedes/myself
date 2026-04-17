@@ -1,0 +1,347 @@
+/* ============================================================
+   WARHAMMER 40K GRIMDARK SCI-FI THEME
+   Dataslate / Cogitator / Adeptus Mechanicus inspired
+   ============================================================ */
+
+.tech-panel {
+  position: relative;
+  background: linear-gradient(145deg, #121214, #0a0a0b);
+  border: 1px solid #2a2a2e;
+  box-shadow:
+    inset 0 0 10px #000,
+    0 0 10px rgba(0, 0, 0, 0.8);
+  border-radius: 6px;
+  padding: 16px;
+  transition: box-shadow 0.35s ease, border-color 0.35s ease, transform 0.25s ease;
+}
+
+.tech-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 6px;
+  background:
+    linear-gradient(transparent 50%, rgba(0, 0, 0, 0.22) 50%);
+  background-size: 100% 3px;
+  mix-blend-mode: overlay;
+  opacity: 0.35;
+}
+
+.tech-panel::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 14px;
+  right: 14px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201, 26, 26, 0.55), transparent);
+  opacity: 0.7;
+}
+
+.tech-panel:hover {
+  border-color: rgba(201, 26, 26, 0.6);
+  box-shadow:
+    inset 0 0 10px #000,
+    0 0 18px rgba(201, 26, 26, 0.35);
+}
+
+.tech-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  border-bottom: 1px dashed #2a2a2e;
+  font-family: "Orbitron", system-ui, sans-serif;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.82rem;
+  color: #c91a1a;
+}
+
+.tech-panel__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tech-panel__badge {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.66rem;
+  color: #888;
+  border: 1px solid #2a2a2e;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: #0a0a0b;
+}
+
+.rivets {
+  position: absolute;
+  inset: 4px;
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.rivets::before,
+.rivets::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #1c1c1f;
+  border: 1px solid #000;
+  border-radius: 50%;
+  box-shadow: 0 0 2px #000 inset;
+}
+
+.rivets::before {
+  top: 4px;
+  left: 4px;
+}
+.rivets::after {
+  top: 4px;
+  right: 4px;
+}
+
+/* ---------- SKULL / ICON HEADER ---------- */
+.skull-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #c91a1a;
+  font-family: "Orbitron", system-ui, sans-serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.skull-divider::before,
+.skull-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #2a2a2e, transparent);
+}
+
+/* ---------- GLOBAL SCANLINE OVERLAY ---------- */
+.scanline-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.02) 0px,
+      rgba(255, 255, 255, 0.02) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  mix-blend-mode: overlay;
+}
+
+.scanline-overlay::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(201, 26, 26, 0.08),
+    transparent
+  );
+  animation: scanline 6s linear infinite;
+}
+
+/* ---------- TEXT / GLITCH ---------- */
+.text-glow-red {
+  color: #ff5e5e;
+  text-shadow:
+    0 0 4px rgba(201, 26, 26, 0.9),
+    0 0 14px rgba(139, 0, 0, 0.6);
+}
+
+.text-glow-green {
+  color: #00ff9f;
+  text-shadow:
+    0 0 4px rgba(0, 255, 159, 0.9),
+    0 0 12px rgba(0, 255, 159, 0.5);
+}
+
+.glitch {
+  position: relative;
+  display: inline-block;
+  color: #e5e5e5;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.glitch::before {
+  left: 1px;
+  text-shadow: -1px 0 #c91a1a;
+  clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+  animation: glitch-top 3.5s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+  left: -1px;
+  text-shadow: -1px 0 #00ff9f;
+  clip-path: polygon(0 55%, 100% 55%, 100% 100%, 0 100%);
+  animation: glitch-bottom 2.7s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-top {
+  0%, 90%, 100% { transform: translate(0, 0); }
+  92% { transform: translate(-2px, -1px); }
+  94% { transform: translate(2px, 1px); }
+  96% { transform: translate(-1px, 1px); }
+}
+@keyframes glitch-bottom {
+  0%, 88%, 100% { transform: translate(0, 0); }
+  90% { transform: translate(2px, 1px); }
+  93% { transform: translate(-2px, -1px); }
+  96% { transform: translate(1px, -1px); }
+}
+
+/* ---------- HUD BAR ---------- */
+.hud-bar {
+  height: 10px;
+  background: #0a0a0b;
+  border: 1px solid #2a2a2e;
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.hud-bar__fill {
+  height: 100%;
+  background: linear-gradient(90deg, #5a0000, #c91a1a, #ff5e5e);
+  box-shadow: 0 0 8px rgba(201, 26, 26, 0.6);
+  position: relative;
+}
+
+.hud-bar__fill::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.25) 0 3px,
+    transparent 3px 6px
+  );
+}
+
+.hud-bar--green .hud-bar__fill {
+  background: linear-gradient(90deg, #004f32, #00ff9f);
+  box-shadow: 0 0 8px rgba(0, 255, 159, 0.55);
+}
+
+/* ---------- TERMINAL ---------- */
+.terminal {
+  background: #030303;
+  border: 1px solid #1b1b1f;
+  box-shadow: inset 0 0 30px rgba(0, 255, 159, 0.05), inset 0 0 6px #000;
+  font-family: "JetBrains Mono", monospace;
+  color: #00ff9f;
+  padding: 12px 14px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.terminal::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 255, 159, 0.03) 0 1px,
+    transparent 1px 3px
+  );
+  pointer-events: none;
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 8px;
+  height: 14px;
+  vertical-align: -2px;
+  background: #00ff9f;
+  margin-left: 3px;
+  animation: blink 1s step-end infinite;
+}
+
+/* ---------- CORNER BRACKETS ---------- */
+.corner-brackets {
+  position: relative;
+}
+.corner-brackets::before,
+.corner-brackets::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #c91a1a;
+  opacity: 0.85;
+}
+.corner-brackets::before {
+  top: -2px;
+  left: -2px;
+  border-right: none;
+  border-bottom: none;
+}
+.corner-brackets::after {
+  bottom: -2px;
+  right: -2px;
+  border-left: none;
+  border-top: none;
+}
+
+/* ---------- STATUS PILLS ---------- */
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  border: 1px solid #2a2a2e;
+  background: #0a0a0b;
+}
+
+.status-pill--ok {
+  color: #00ff9f;
+  border-color: rgba(0, 255, 159, 0.35);
+  box-shadow: 0 0 8px rgba(0, 255, 159, 0.15) inset;
+}
+
+.status-pill--wip {
+  color: #ffb454;
+  border-color: rgba(255, 180, 84, 0.35);
+}
+
+.status-pill--lock {
+  color: #8b0000;
+  border-color: rgba(139, 0, 0, 0.45);
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 6px currentColor;
+}
