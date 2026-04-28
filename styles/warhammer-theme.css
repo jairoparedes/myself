@@ -213,6 +213,39 @@
   96% { transform: translate(1px, -1px); }
 }
 
+/* ---------- SEGMENTED BAR (sidebar status) ---------- */
+.segmented-bar {
+  height: 8px;
+  background: #0a0a0b;
+  border: 1px solid #2a2a2e;
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+}
+
+.segmented-bar__fill {
+  height: 100%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #c91a1a 0 6px,
+      transparent 6px 8px
+    ),
+    linear-gradient(90deg, #5a0000, #c91a1a);
+  box-shadow: 0 0 6px rgba(201, 26, 26, 0.55);
+}
+
+.segmented-bar--green .segmented-bar__fill {
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #00ff9f 0 6px,
+      transparent 6px 8px
+    ),
+    linear-gradient(90deg, #004f32, #00ff9f);
+  box-shadow: 0 0 6px rgba(0, 255, 159, 0.5);
+}
+
 /* ---------- HUD BAR ---------- */
 .hud-bar {
   height: 10px;

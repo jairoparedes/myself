@@ -1,13 +1,19 @@
 export interface Skill {
   name: string;
+  tech: string;
   level: number;
-  category?: string;
 }
 
 export const skills: Skill[] = [
-  { name: "Backend (Laravel)", level: 90, category: "Cogitator" },
-  { name: "Cloud (GCP)", level: 85, category: "Noosphere" },
-  { name: "IoT (ESP32)", level: 88, category: "Machine Spirit" },
-  { name: "Bases de Datos", level: 87, category: "Archivum" },
-  { name: "Automatización", level: 92, category: "Ritus Mechanicus" },
+  { name: "Lenguaje Binario", tech: "Laravel", level: 98 },
+  { name: "Máquinas de Datos", tech: "MySQL", level: 92 },
+  { name: "Códigos de Nube", tech: "GCP", level: 90 },
+  { name: "Protocolos IoT", tech: "ESP32", level: 95 },
+  { name: "Automatización", tech: "Workflows", level: 93 },
+  { name: "Interfaces", tech: "Vue / JS", level: 85 },
+  { name: "Control de Servidores", tech: "Linux", level: 88 },
+  { name: "Innovación y Creatividad", tech: "", level: 97 },
 ];
+
+export const totalXP = 2540;
+export const maxXP = 4500;
