@@ -40,7 +40,7 @@ export default function MissionCard({ mission, index = 0 }: MissionCardProps) {
     >
       {/* IMAGEN */}
       <div
-        className={`relative aspect-[16/10] rounded-sm overflow-hidden border border-panel-border bg-gradient-to-br ${mission.gradient}`}
+        className={`relative aspect-[16/10] rounded-sm overflow-hidden border border-panel-border bg-gradient-to-br ${mission.gradient} parchment-tint`}
       >
         <div
           aria-hidden

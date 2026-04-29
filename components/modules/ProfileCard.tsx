@@ -11,7 +11,7 @@ export default function ProfileCard() {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6 }}
-        className="relative w-full sm:w-[180px] aspect-[3/4] sm:aspect-auto sm:h-auto shrink-0 border border-panel-border rounded-sm overflow-hidden corner-brackets"
+        className="relative w-full sm:w-[180px] aspect-[3/4] sm:aspect-auto sm:h-auto shrink-0 border border-panel-border rounded-sm overflow-hidden corner-brackets parchment-tint"
       >
         <div className="absolute inset-0 bg-gradient-to-b from-stone-800 via-stone-900 to-black" />
         <div
