@@ -14,10 +14,10 @@ export default function ProfileCard() {
         transition={{ duration: 0.6 }}
         className="relative w-full sm:w-[180px] aspect-[3/4] sm:aspect-auto sm:h-auto shrink-0 steampunk-frame"
       >
-        <SteampunkCorner position="tl" size={28} />
-        <SteampunkCorner position="tr" size={28} />
-        <SteampunkCorner position="bl" size={28} />
-        <SteampunkCorner position="br" size={28} />
+        <SteampunkCorner position="tl" size={30} variant="imperial" />
+        <SteampunkCorner position="tr" size={30} variant="imperial" />
+        <SteampunkCorner position="bl" size={30} variant="imperial" />
+        <SteampunkCorner position="br" size={30} variant="imperial" />
         <div className="absolute inset-0 border border-panel-border rounded-sm overflow-hidden parchment-tint">
         <div className="absolute inset-0 bg-gradient-to-b from-stone-800 via-stone-900 to-black" />
         <div

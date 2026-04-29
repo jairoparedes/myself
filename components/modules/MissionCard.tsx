@@ -39,10 +39,10 @@ export default function MissionCard({ mission, index = 0 }: MissionCardProps) {
       transition={{ duration: 0.5, delay: index * 0.06 }}
       className="tech-panel steampunk-frame h-full flex flex-col !p-2.5"
     >
-      <SteampunkCorner position="tl" size={26} />
-      <SteampunkCorner position="tr" size={26} />
-      <SteampunkCorner position="bl" size={26} />
-      <SteampunkCorner position="br" size={26} />
+      <SteampunkCorner position="tl" size={28} variant="tech-priest" />
+      <SteampunkCorner position="tr" size={28} variant="tech-priest" />
+      <SteampunkCorner position="bl" size={28} variant="tech-priest" />
+      <SteampunkCorner position="br" size={28} variant="tech-priest" />
 
       {/* IMAGEN */}
       <div

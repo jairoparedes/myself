@@ -172,18 +172,114 @@
 }
 
 /* ============================================================
-   STEAMPUNK FRAME
-   Doble borde de latón + chamfered corners + tornillos en bordes
+   STEAMPUNK / FACTION FRAMES
+   Variantes: tech-priest, imperial, blood-angels, ultramarines, necron
    ============================================================ */
 .steampunk-frame {
   position: relative;
   border-radius: 2px;
-  /* Doble borde estilo placa de latón */
   border-width: 1px;
   border-style: solid;
   border-color: #2a2a2e;
-  outline: 1px solid rgba(212, 169, 106, 0.18);
+  outline: 1px solid rgba(255, 255, 255, 0.04);
   outline-offset: -5px;
+}
+
+/* ---------- TECH-PRIEST :: dark metal + green LED ---------- */
+.frame-tech-priest {
+  --accent: 126, 255, 95;
+}
+.frame-tech-priest:hover {
+  border-color: rgba(126, 255, 95, 0.45);
+  outline-color: rgba(126, 255, 95, 0.22);
+  box-shadow:
+    inset 0 1px 0 rgba(126, 255, 95, 0.06),
+    inset 0 0 22px rgba(0, 0, 0, 0.95),
+    0 0 22px rgba(126, 255, 95, 0.18),
+    0 4px 14px rgba(0, 0, 0, 0.85);
+}
+.frame-tech-priest .tech-panel__header {
+  color: #7eff5f;
+  text-shadow: 0 0 6px rgba(126, 255, 95, 0.55);
+}
+.frame-tech-priest .tech-panel__header::before {
+  background:
+    linear-gradient(90deg, transparent, rgba(126, 255, 95, 0.55) 20%, rgba(126, 255, 95, 0.85) 50%, rgba(126, 255, 95, 0.55) 80%, transparent) bottom / 100% 1px no-repeat,
+    linear-gradient(90deg, transparent, rgba(60, 60, 65, 0.7) 20%, rgba(60, 60, 65, 0.7) 80%, transparent) top / 100% 1px no-repeat;
+}
+
+/* ---------- IMPERIAL :: brass + skull ---------- */
+.frame-imperial {
+  --accent: 212, 169, 106;
+  outline-color: rgba(212, 169, 106, 0.22);
+}
+.frame-imperial:hover {
+  border-color: rgba(212, 169, 106, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 220, 160, 0.08),
+    inset 0 0 22px rgba(0, 0, 0, 0.95),
+    0 0 24px rgba(212, 169, 106, 0.22),
+    0 4px 14px rgba(0, 0, 0, 0.85);
+}
+.frame-imperial .tech-panel__header {
+  color: #d4a96a;
+  text-shadow: 0 0 6px rgba(212, 169, 106, 0.5);
+}
+
+/* ---------- BLOOD ANGELS :: red + gold ---------- */
+.frame-blood-angels {
+  --accent: 255, 94, 94;
+  outline-color: rgba(255, 94, 94, 0.18);
+  background-color: #1a0808 !important;
+}
+.frame-blood-angels:hover {
+  border-color: rgba(255, 94, 94, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 94, 94, 0.08),
+    inset 0 0 22px rgba(0, 0, 0, 0.95),
+    0 0 26px rgba(255, 94, 94, 0.28),
+    0 4px 14px rgba(0, 0, 0, 0.85);
+}
+.frame-blood-angels .tech-panel__header {
+  color: #ff8a8a;
+  text-shadow: 0 0 6px rgba(255, 94, 94, 0.55);
+}
+
+/* ---------- ULTRAMARINES :: blue + gold ---------- */
+.frame-ultramarines {
+  --accent: 90, 142, 255;
+  outline-color: rgba(90, 142, 255, 0.2);
+  background-color: #050a1a !important;
+}
+.frame-ultramarines:hover {
+  border-color: rgba(90, 142, 255, 0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(90, 142, 255, 0.08),
+    inset 0 0 22px rgba(0, 0, 0, 0.95),
+    0 0 24px rgba(90, 142, 255, 0.25),
+    0 4px 14px rgba(0, 0, 0, 0.85);
+}
+.frame-ultramarines .tech-panel__header {
+  color: #8eb4ff;
+  text-shadow: 0 0 6px rgba(90, 142, 255, 0.55);
+}
+
+/* ---------- NECRON :: cold green ---------- */
+.frame-necron {
+  --accent: 26, 255, 122;
+  outline-color: rgba(26, 255, 122, 0.18);
+}
+.frame-necron:hover {
+  border-color: rgba(26, 255, 122, 0.5);
+  box-shadow:
+    inset 0 1px 0 rgba(26, 255, 122, 0.06),
+    inset 0 0 22px rgba(0, 0, 0, 0.95),
+    0 0 24px rgba(26, 255, 122, 0.22),
+    0 4px 14px rgba(0, 0, 0, 0.85);
+}
+.frame-necron .tech-panel__header {
+  color: #6affa9;
+  text-shadow: 0 0 6px rgba(26, 255, 122, 0.5);
 }
 
 /* Borde dorado interior con tornillos en los lados */
@@ -194,26 +290,17 @@
   z-index: 2;
 }
 
-/* línea interna de latón (doble borde) */
-.steampunk-frame > .tech-panel__header,
-.steampunk-frame {
-  --brass-1: #d4a96a;
-  --brass-2: #8b6f2c;
-  --brass-3: #3a2818;
-}
-
+/* doble borde acento usando var --accent (RGB) inyectada por cada frame */
 .steampunk-frame::before {
-  /* sobreescribe el ::before de tech-panel manteniendo grain pero añadiendo borde latón */
   background-image:
-    /* borde de latón interno */
     linear-gradient(
       180deg,
       transparent 0,
       transparent 6px,
-      rgba(212, 169, 106, 0.18) 7px,
+      rgba(var(--accent, 212, 169, 106), 0.16) 7px,
       transparent 8px,
       transparent calc(100% - 8px),
-      rgba(212, 169, 106, 0.18) calc(100% - 7px),
+      rgba(var(--accent, 212, 169, 106), 0.16) calc(100% - 7px),
       transparent calc(100% - 6px)
     ),
     var(--tex-grain),

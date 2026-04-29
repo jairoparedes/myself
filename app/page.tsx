@@ -42,7 +42,7 @@ export default function Page() {
               <TechPanel
                 title="Perfil del Tecno-Adepto"
                 centerTitle
-                withBrackets
+                variant="imperial"
                 delay={0.05}
               >
                 <ProfileCard />
@@ -51,7 +51,7 @@ export default function Page() {
               <TechPanel
                 title="Habilidades del Adepto"
                 centerTitle
-                withBrackets
+                variant="tech-priest"
                 delay={0.12}
               >
                 <div className="flex flex-col">
@@ -83,7 +83,7 @@ export default function Page() {
             <TechPanel
               title="Misiones Principales"
               centerTitle
-              withBrackets
+              variant="tech-priest"
               delay={0.18}
             >
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
@@ -98,7 +98,7 @@ export default function Page() {
               <TechPanel
                 title="Registro del Tecno-Adepto"
                 centerTitle
-                withBrackets
+                variant="necron"
                 delay={0.25}
               >
                 <TerminalLog />
@@ -107,7 +107,7 @@ export default function Page() {
               <TechPanel
                 title="Arsenal Tecnológico"
                 centerTitle
-                withBrackets
+                variant="ultramarines"
                 delay={0.3}
               >
                 <ArsenalGrid />
@@ -116,7 +116,7 @@ export default function Page() {
               <TechPanel
                 title="Logros del Adepto"
                 centerTitle
-                withBrackets
+                variant="blood-angels"
                 delay={0.35}
               >
                 <AchievementsPanel />
