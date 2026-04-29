@@ -10,6 +10,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Mission } from "@/data/missions";
+import SteampunkCorner from "@/components/ui/SteampunkCorner";
 
 interface MissionCardProps {
   mission: Mission;
@@ -36,8 +37,13 @@ export default function MissionCard({ mission, index = 0 }: MissionCardProps) {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.06 }}
-      className="tech-panel corner-brackets h-full flex flex-col !p-2.5"
+      className="tech-panel steampunk-frame h-full flex flex-col !p-2.5"
     >
+      <SteampunkCorner position="tl" size={26} />
+      <SteampunkCorner position="tr" size={26} />
+      <SteampunkCorner position="bl" size={26} />
+      <SteampunkCorner position="br" size={26} />
+
       {/* IMAGEN */}
       <div
         className={`relative aspect-[16/10] rounded-sm overflow-hidden border border-panel-border bg-gradient-to-br ${mission.gradient} parchment-tint`}

@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { ReactNode } from "react";
+import SteampunkCorner from "./SteampunkCorner";
+import EdgeRivets from "./EdgeRivets";
 
 interface TechPanelProps {
   children: ReactNode;
@@ -12,6 +14,8 @@ interface TechPanelProps {
   withBrackets?: boolean;
   centerTitle?: boolean;
   bodyClassName?: string;
+  cornerSize?: number;
+  cornerVariant?: "ornate" | "simple";
 }
 
 export default function TechPanel({
@@ -20,18 +24,28 @@ export default function TechPanel({
   badge,
   className = "",
   delay = 0,
-  withBrackets = false,
+  withBrackets = true,
   centerTitle = false,
   bodyClassName = "",
+  cornerSize = 42,
+  cornerVariant = "ornate",
 }: TechPanelProps) {
   return (
     <motion.section
       initial={{ opacity: 0, y: 14 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.55, delay, ease: "easeOut" }}
-      className={`tech-panel ${withBrackets ? "corner-brackets" : ""} ${className}`}
+      className={`tech-panel steampunk-frame ${className}`}
     >
-      <span className="rivets" aria-hidden />
+      {withBrackets && (
+        <>
+          <EdgeRivets count={2} />
+          <SteampunkCorner position="tl" size={cornerSize} variant={cornerVariant} />
+          <SteampunkCorner position="tr" size={cornerSize} variant={cornerVariant} />
+          <SteampunkCorner position="bl" size={cornerSize} variant={cornerVariant} />
+          <SteampunkCorner position="br" size={cornerSize} variant={cornerVariant} />
+        </>
+      )}
 
       {(title || badge) && (
         <div

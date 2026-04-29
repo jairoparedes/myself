@@ -171,43 +171,78 @@
   right: 0;
 }
 
-/* ---------- CORNER BRACKETS (mejorados) ---------- */
-.corner-brackets {
+/* ============================================================
+   STEAMPUNK FRAME
+   Doble borde de latón + chamfered corners + tornillos en bordes
+   ============================================================ */
+.steampunk-frame {
   position: relative;
-}
-.corner-brackets::before,
-.corner-brackets::after {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  border: 1px solid rgba(201, 26, 26, 0.85);
-  filter: drop-shadow(0 0 4px rgba(201, 26, 26, 0.5));
-  z-index: 2;
-}
-.corner-brackets::before {
-  top: -1px;
-  left: -1px;
-  border-right: none;
-  border-bottom: none;
-}
-.corner-brackets::after {
-  bottom: -1px;
-  right: -1px;
-  border-left: none;
-  border-top: none;
+  border-radius: 2px;
+  /* Doble borde estilo placa de latón */
+  border-width: 1px;
+  border-style: solid;
+  border-color: #2a2a2e;
+  outline: 1px solid rgba(212, 169, 106, 0.18);
+  outline-offset: -5px;
 }
 
-/* añadimos también las esquinas faltantes con un wrapper extra */
-.corner-brackets > .rivets::before {
-  top: -10px;
-  right: -10px;
-  left: auto;
+/* Borde dorado interior con tornillos en los lados */
+.steampunk-frame > .edge-rivets {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
 }
-.corner-brackets > .rivets::after {
-  bottom: -10px;
-  left: -10px;
-  right: auto;
+
+/* línea interna de latón (doble borde) */
+.steampunk-frame > .tech-panel__header,
+.steampunk-frame {
+  --brass-1: #d4a96a;
+  --brass-2: #8b6f2c;
+  --brass-3: #3a2818;
+}
+
+.steampunk-frame::before {
+  /* sobreescribe el ::before de tech-panel manteniendo grain pero añadiendo borde latón */
+  background-image:
+    /* borde de latón interno */
+    linear-gradient(
+      180deg,
+      transparent 0,
+      transparent 6px,
+      rgba(212, 169, 106, 0.18) 7px,
+      transparent 8px,
+      transparent calc(100% - 8px),
+      rgba(212, 169, 106, 0.18) calc(100% - 7px),
+      transparent calc(100% - 6px)
+    ),
+    var(--tex-grain),
+    var(--tex-noise) !important;
+  background-size: 100% 100%, 320px 320px, 220px 220px !important;
+  background-blend-mode: normal, overlay, overlay !important;
+}
+
+/* franja decorativa con remaches en los lados */
+.steampunk-frame > .steampunk-rivet-strip {
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* hover: el latón refleja más */
+.steampunk-frame:hover {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 220, 160, 0.08),
+    inset 0 0 22px rgba(0, 0, 0, 0.95),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.6),
+    0 0 26px rgba(212, 169, 106, 0.18),
+    0 4px 14px rgba(0, 0, 0, 0.85);
+  border-color: rgba(212, 169, 106, 0.45);
+}
+
+/* legado: corner-brackets compatible */
+.corner-brackets {
+  position: relative;
 }
 
 /* ---------- DIVIDER ---------- */

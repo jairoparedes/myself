@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { profile } from "@/data/profile";
+import SteampunkCorner from "@/components/ui/SteampunkCorner";
 
 export default function ProfileCard() {
   return (
@@ -11,8 +12,13 @@ export default function ProfileCard() {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6 }}
-        className="relative w-full sm:w-[180px] aspect-[3/4] sm:aspect-auto sm:h-auto shrink-0 border border-panel-border rounded-sm overflow-hidden corner-brackets parchment-tint"
+        className="relative w-full sm:w-[180px] aspect-[3/4] sm:aspect-auto sm:h-auto shrink-0 steampunk-frame"
       >
+        <SteampunkCorner position="tl" size={28} />
+        <SteampunkCorner position="tr" size={28} />
+        <SteampunkCorner position="bl" size={28} />
+        <SteampunkCorner position="br" size={28} />
+        <div className="absolute inset-0 border border-panel-border rounded-sm overflow-hidden parchment-tint">
         <div className="absolute inset-0 bg-gradient-to-b from-stone-800 via-stone-900 to-black" />
         <div
           aria-hidden
@@ -86,6 +92,7 @@ export default function ProfileCard() {
               "repeating-linear-gradient(to bottom, rgba(255,255,255,0.05) 0 1px, transparent 1px 3px)",
           }}
         />
+        </div>
       </motion.div>
 
       {/* DATOS */}
