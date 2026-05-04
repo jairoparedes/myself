@@ -36,10 +36,10 @@ export default function MissionCard({ mission, index = 0 }: MissionCardProps) {
       initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, delay: index * 0.05 }}
-      className="h-full flex flex-col min-h-0"
+      className="h-full flex flex-col min-h-0 gap-1"
     >
       <div
-        className={`relative aspect-[16/10] rounded-sm overflow-hidden border border-[#3a2818] bg-gradient-to-br ${mission.gradient} parchment-tint`}
+        className={`relative aspect-[16/10] rounded-md overflow-hidden border border-[#3a2818] bg-gradient-to-br ${mission.gradient} parchment-tint`}
       >
         <div
           aria-hidden
@@ -65,15 +65,15 @@ export default function MissionCard({ mission, index = 0 }: MissionCardProps) {
         />
       </div>
 
-      <h4 className="font-display font-bold text-[0.78rem] tracking-[0.12em] text-[var(--text-color,#ead9cc)] uppercase mt-2.5">
+      <h4 className="font-display font-bold text-[0.78rem] tracking-[0.12em] text-[var(--text-color,#ead9cc)] uppercase mt-3">
         {mission.title}
       </h4>
 
-      <p className="mt-1 text-[0.66rem] font-mono text-[rgba(234,217,204,0.72)] leading-relaxed flex-1">
+      <p className="mt-2 text-[0.66rem] font-mono text-[rgba(234,217,204,0.72)] leading-relaxed flex-1">
         {mission.description}
       </p>
 
-      <div className="mt-auto pt-2 border-t border-dashed border-[#3a2818] flex items-center gap-1.5 flex-wrap">
+      <div className="mt-auto pt-2.5 border-t border-dashed border-[#3a2818] flex items-center gap-1.5 flex-wrap">
         <span className={`${statusColor} text-xs`}>{statusMark}</span>
         <span className="text-[0.55rem] font-mono tracking-[0.18em] uppercase text-[rgba(234,217,204,0.5)]">
           Estado:

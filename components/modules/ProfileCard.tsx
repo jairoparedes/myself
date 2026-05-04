@@ -7,13 +7,13 @@ import { profile } from "@/data/profile";
 
 export default function ProfileCard() {
   return (
-    <div className="flex flex-col sm:flex-row gap-5 h-full items-stretch">
+    <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 h-full items-stretch">
       {/* RETRATO — marco ornamental con cráneo superior (mockup) */}
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.55 }}
-        className="shrink-0 w-full sm:w-[228px] flex justify-center sm:justify-start"
+        className="shrink-0 w-full sm:w-[240px] flex justify-center sm:justify-start"
       >
         <div className="profile-portrait-shell">
           <div className="profile-portrait-shell__skull" aria-hidden>
@@ -24,7 +24,7 @@ export default function ProfileCard() {
               src={profile.portraitSrc}
               alt={profile.portraitAlt}
               fill
-              sizes="(max-width: 640px) 100vw, 228px"
+              sizes="(max-width: 640px) 100vw, 240px"
               className="object-cover object-top"
               priority
             />
@@ -42,7 +42,7 @@ export default function ProfileCard() {
 
       {/* DATOS */}
       <div className="flex-1 min-w-0 flex flex-col">
-        <dl className="text-[0.78rem] font-mono space-y-2.5 text-[var(--text-color,#ead9cc)]">
+        <dl className="text-[0.78rem] font-mono space-y-3 text-[var(--text-color,#ead9cc)]">
           <Field label="Nombre" value={profile.name} />
           <Field label="Rango" value={`${profile.rank}\n${profile.rankSub}`} />
           <Field label="Especialidad" value={profile.specialization} />
@@ -57,7 +57,7 @@ export default function ProfileCard() {
         </dl>
 
         {/* COMANDO DEL DÍA — borde verde terminal (mockup) */}
-        <div className="mt-auto pt-4">
+        <div className="mt-auto pt-5 sm:pt-6">
           <div className="command-of-day-box">
             <div className="command-of-day-box__label">&gt; Comando del Día</div>
             <div className="command-of-day-box__body">
@@ -106,8 +106,8 @@ function Field({
   suffix?: ReactNode;
 }) {
   return (
-    <div className="flex items-start gap-3">
-      <dt className="w-24 shrink-0 text-text-muted tracking-[0.16em] uppercase text-[0.62rem] pt-0.5">
+    <div className="flex items-start gap-3.5">
+      <dt className="w-[5.5rem] shrink-0 text-text-muted tracking-[0.16em] uppercase text-[0.62rem] pt-0.5">
         {label}:
       </dt>
       <dd className="whitespace-pre-line leading-snug flex-1 opacity-95">

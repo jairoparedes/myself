@@ -4,7 +4,7 @@ import { Cog, Settings } from "lucide-react";
 
 export default function FooterBar() {
   return (
-    <footer className="min-h-11 border-t border-panel-border bg-[#0a0a0b]/85 backdrop-blur-sm px-4 py-2 flex items-center justify-between gap-3 text-[0.58rem] font-mono tracking-[0.18em] uppercase">
+    <footer className="min-h-[3rem] border-t border-panel-border bg-[#0a0a0b]/85 backdrop-blur-sm px-[var(--layout-padding-x)] sm:px-8 lg:px-10 py-3 flex items-center justify-between gap-4 text-[0.58rem] font-mono tracking-[0.18em] uppercase">
       <div className="flex items-center gap-2 shrink-0">
         <Cog className="w-4 h-4 text-[#a67c00] opacity-80 animate-[spin_12s_linear_infinite]" strokeWidth={1.2} />
         <div className="flex flex-col leading-tight">

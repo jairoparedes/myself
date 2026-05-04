@@ -27,7 +27,7 @@ export default function Page() {
       <div className="flex-1 flex flex-col min-w-0">
         <TopBar />
 
-        <main className="flex-1 p-4 lg:p-5 overflow-x-hidden">
+        <main className="flex-1 overflow-x-hidden px-[var(--layout-padding-x)] py-[var(--layout-padding-y)] lg:py-8">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -35,10 +35,10 @@ export default function Page() {
               hidden: {},
               visible: { transition: { staggerChildren: 0.06 } },
             }}
-            className="flex flex-col gap-4 max-w-[1600px] mx-auto w-full"
+            className="flex flex-col gap-[var(--layout-section-gap)] max-w-[1600px] mx-auto w-full"
           >
             {/* TOP ROW :: PERFIL + HABILIDADES */}
-            <div className="grid grid-cols-1 xl:grid-cols-[1.45fr_1fr] gap-4 xl:gap-5">
+            <div className="grid grid-cols-1 xl:grid-cols-[1.45fr_1fr] gap-[var(--layout-grid-gap-lg)]">
               <AdeptusPngPanel
                 title="Perfil del Tecno-Adepto"
                 centerTitle
@@ -64,7 +64,7 @@ export default function Page() {
                   ))}
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-dashed border-panel-border">
+                <div className="mt-5 pt-4 border-t border-dashed border-[rgba(234,217,204,0.2)]">
                   <div className="flex items-baseline justify-between">
                     <span className="text-[0.68rem] font-mono tracking-[0.22em] uppercase text-accent-red-glow">
                       Puntos de Experiencia:
@@ -83,7 +83,7 @@ export default function Page() {
               centerTitle
               delay={0.18}
             >
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-[var(--layout-grid-gap)]">
                 {missions.map((m, i) => (
                   <AdeptusPngPanel
                     key={m.id}
@@ -98,7 +98,7 @@ export default function Page() {
             </AdeptusPngPanel>
 
             {/* BOTTOM ROW :: TERMINAL + ARSENAL + LOGROS */}
-            <div className="grid grid-cols-1 lg:grid-cols-[1.35fr_1fr_1.15fr] gap-4 xl:gap-5">
+            <div className="grid grid-cols-1 lg:grid-cols-[1.35fr_1fr_1.15fr] gap-[var(--layout-grid-gap-lg)]">
               <AdeptusPngPanel
                 title="Registro del Tecno-Adepto"
                 centerTitle

@@ -25,9 +25,9 @@ const NAV = [
 
 export default function Sidebar() {
   return (
-    <aside className="hidden lg:flex flex-col w-[268px] shrink-0 border-r border-panel-border bg-[#0a0a0b]/88 backdrop-blur-sm">
+    <aside className="hidden lg:flex flex-col w-[278px] shrink-0 border-r border-panel-border bg-[#0a0a0b]/88 backdrop-blur-sm">
       {/* HEADER NOMBRE */}
-      <div className="px-5 pt-5 pb-4 border-b border-panel-border">
+      <div className="px-6 pt-6 pb-5 border-b border-panel-border">
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -46,7 +46,7 @@ export default function Sidebar() {
       </div>
 
       {/* NAV MENU */}
-      <nav className="px-3 py-3 flex flex-col gap-1 border-b border-panel-border">
+      <nav className="px-4 py-4 flex flex-col gap-1.5 border-b border-panel-border">
         {NAV.map((item, i) => {
           const Icon = item.icon;
           return (
@@ -57,7 +57,7 @@ export default function Sidebar() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.04 * i }}
               title={item.slug}
-              className={`relative flex items-center gap-3 px-3 py-2 rounded-sm border text-left transition-all ${
+              className={`relative flex items-center gap-3 px-3.5 py-2.5 rounded-sm border text-left transition-all ${
                 item.active
                   ? "border-accent-red/60 bg-accent-red/15 text-accent-red-glow shadow-glow-red"
                   : "border-transparent text-text-muted hover:text-text-primary hover:border-panel-border hover:bg-[#121214]"
@@ -76,8 +76,8 @@ export default function Sidebar() {
       </nav>
 
       {/* ESTADO DEL ADEPTO */}
-      <div className="px-4 py-3 border-b border-panel-border">
-        <h3 className="text-[0.6rem] font-mono tracking-[0.22em] uppercase text-accent-red-glow mb-3">
+      <div className="px-5 py-4 border-b border-panel-border">
+        <h3 className="text-[0.6rem] font-mono tracking-[0.22em] uppercase text-accent-red-glow mb-3.5">
           Estado del Adepto
         </h3>
         <StatusRow label="Salud" value="100%" pct={100} variant="green" />
@@ -92,11 +92,11 @@ export default function Sidebar() {
       </div>
 
       {/* CREDO */}
-      <div className="px-4 py-3 border-b border-panel-border">
-        <h3 className="text-[0.6rem] font-mono tracking-[0.22em] uppercase text-accent-red-glow mb-2">
+      <div className="px-5 py-4 border-b border-panel-border">
+        <h3 className="text-[0.6rem] font-mono tracking-[0.22em] uppercase text-accent-red-glow mb-2.5">
           Credo del Tecno-Adepto
         </h3>
-        <p className="text-[0.68rem] font-mono italic text-text-primary/90 leading-relaxed">
+        <p className="text-[0.68rem] font-mono italic text-text-primary/90 leading-relaxed pl-0.5">
           &ldquo;No buscamos la verdad por fe, sino por datos.
           <br />
           No tememos a la máquina, la comprendemos.&rdquo;
@@ -104,8 +104,8 @@ export default function Sidebar() {
       </div>
 
       {/* UBICACIÓN + mapa Tierra */}
-      <div className="px-4 py-3 mt-auto">
-        <h3 className="text-[0.6rem] font-mono tracking-[0.22em] uppercase text-accent-red-glow mb-2">
+      <div className="px-5 py-5 mt-auto pb-6">
+        <h3 className="text-[0.6rem] font-mono tracking-[0.22em] uppercase text-accent-red-glow mb-2.5">
           Ubicación Actual
         </h3>
         <p className="text-[0.7rem] font-mono text-text-primary leading-snug">
@@ -117,7 +117,7 @@ export default function Sidebar() {
         <p className="mt-1 text-[0.58rem] font-mono text-text-muted leading-snug">
           Coordenadas: {profile.location.coords}
         </p>
-        <div className="mt-3 flex justify-center">
+        <div className="mt-4 flex justify-center">
           <EarthGlobe />
         </div>
       </div>
@@ -193,7 +193,7 @@ function StatusRow({
   variant: "red" | "green";
 }) {
   return (
-    <div className="mb-2.5 last:mb-0">
+    <div className="mb-3 last:mb-0">
       <div className="flex justify-between items-baseline mb-1">
         <span className="text-[0.62rem] font-mono tracking-[0.1em] uppercase text-text-muted">
           {label}

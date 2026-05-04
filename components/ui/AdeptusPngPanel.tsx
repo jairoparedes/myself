@@ -57,7 +57,7 @@ function HeaderFlourish({ side }: { side: "left" | "right" }) {
   return (
     <svg
       viewBox="0 0 56 16"
-      className={`h-3 w-14 shrink-0 text-[#a67c00] opacity-90 ${
+      className={`h-3.5 w-[4rem] shrink-0 text-[#a67c00] opacity-90 ${
         side === "right" ? "rotate-180" : ""
       }`}
       aria-hidden

@@ -24,7 +24,7 @@ export default function TerminalLog() {
   }, []);
 
   return (
-    <div className="terminal text-[0.72rem] leading-relaxed min-h-[180px] font-mono">
+    <div className="terminal text-[0.72rem] leading-relaxed min-h-[192px] font-mono">
       {LINES.slice(0, shown).map((l, i) => (
         <div key={i} className="whitespace-pre-wrap break-words">
           <span className="text-text-muted">[{l.ts}]</span>{" "}

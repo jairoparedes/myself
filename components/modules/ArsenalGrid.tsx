@@ -5,7 +5,7 @@ import { arsenal } from "@/data/arsenal";
 
 export default function ArsenalGrid() {
   return (
-    <div className="grid grid-cols-4 gap-3">
+    <div className="grid grid-cols-4 gap-x-3 gap-y-4 sm:gap-x-4">
       {arsenal.map((w, i) => (
         <motion.div
           key={w.name}
@@ -13,7 +13,7 @@ export default function ArsenalGrid() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.05 * i, duration: 0.4 }}
           whileHover={{ scale: 1.05 }}
-          className="flex flex-col items-center gap-1.5"
+          className="flex flex-col items-center gap-2"
         >
           <div
             className="w-12 h-12 rounded-sm border border-panel-border bg-[#0a0a0b] flex items-center justify-center font-display font-black text-lg shadow-inner"

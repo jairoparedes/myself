@@ -536,8 +536,8 @@
     inset 0 0 0 1px rgba(0, 0, 0, 0.6);
   font-family: "JetBrains Mono", monospace;
   color: #00ff9f;
-  padding: 12px 14px;
-  border-radius: 4px;
+  padding: 1rem 1.125rem;
+  border-radius: 6px;
   position: relative;
   overflow: hidden;
 }

@@ -17,7 +17,7 @@ export default function TopBar() {
   }, []);
 
   return (
-    <header className="h-12 border-b border-panel-border bg-[#0a0a0b]/80 backdrop-blur-sm px-5 flex items-center justify-between">
+    <header className="min-h-[3.25rem] border-b border-panel-border bg-[#0a0a0b]/80 backdrop-blur-sm px-6 sm:px-8 lg:px-10 py-2.5 flex items-center justify-between gap-4">
       <div className="flex items-center gap-3 min-w-0">
         <span className="text-accent-red-glow font-display tracking-[0.2em] text-base">⚙</span>
         <span className="text-[0.72rem] font-mono tracking-[0.22em] uppercase text-accent-red-glow truncate">

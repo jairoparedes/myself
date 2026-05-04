@@ -5,15 +5,15 @@ import { achievements } from "@/data/achievements";
 
 export default function AchievementsPanel() {
   return (
-    <div className="flex gap-4 items-start">
-      <ul className="flex-1 space-y-2 font-mono text-[0.78rem]">
+    <div className="flex gap-5 sm:gap-6 items-start">
+      <ul className="flex-1 space-y-2.5 font-mono text-[0.78rem]">
         {achievements.map((a, i) => (
           <motion.li
             key={a.label}
             initial={{ opacity: 0, x: -8 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.07 * i }}
-            className="flex items-baseline gap-2"
+            className="flex items-baseline gap-2.5"
           >
             <span className="text-accent-red-glow">⚙</span>
             <span className="text-accent-red-glow font-bold">{a.value}</span>
