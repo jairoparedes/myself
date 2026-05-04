@@ -1,103 +1,48 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
+import type { ReactNode } from "react";
 import { profile } from "@/data/profile";
-import SteampunkCorner from "@/components/ui/SteampunkCorner";
 
 export default function ProfileCard() {
   return (
-    <div className="flex flex-col sm:flex-row gap-4 h-full">
-      {/* IMAGEN PERSONAJE */}
+    <div className="flex flex-col sm:flex-row gap-5 h-full items-stretch">
+      {/* RETRATO — marco ornamental con cráneo superior (mockup) */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
+        initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6 }}
-        className="relative w-full sm:w-[180px] aspect-[3/4] sm:aspect-auto sm:h-auto shrink-0 steampunk-frame"
+        transition={{ duration: 0.55 }}
+        className="shrink-0 w-full sm:w-[228px] flex justify-center sm:justify-start"
       >
-        <SteampunkCorner position="tl" size={30} variant="imperial" />
-        <SteampunkCorner position="tr" size={30} variant="imperial" />
-        <SteampunkCorner position="bl" size={30} variant="imperial" />
-        <SteampunkCorner position="br" size={30} variant="imperial" />
-        <div className="absolute inset-0 border border-panel-border rounded-sm overflow-hidden parchment-tint">
-        <div className="absolute inset-0 bg-gradient-to-b from-stone-800 via-stone-900 to-black" />
-        <div
-          aria-hidden
-          className="absolute inset-0 opacity-60"
-          style={{
-            background:
-              "radial-gradient(ellipse at 50% 30%, rgba(201,26,26,0.25), transparent 60%), radial-gradient(ellipse at 50% 80%, rgba(0,0,0,0.9), transparent 70%)",
-          }}
-        />
-        {/* SILUETA TECNO-ADEPTO */}
-        <svg
-          viewBox="0 0 120 160"
-          className="absolute inset-0 w-full h-full"
-          preserveAspectRatio="xMidYMid slice"
-          aria-hidden
-        >
-          <defs>
-            <linearGradient id="hoodGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#5b3a2a" />
-              <stop offset="60%" stopColor="#2a1c14" />
-              <stop offset="100%" stopColor="#0a0a0b" />
-            </linearGradient>
-            <radialGradient id="faceGrad" cx="0.5" cy="0.5" r="0.5">
-              <stop offset="0%" stopColor="#1a1a1a" />
-              <stop offset="100%" stopColor="#000" />
-            </radialGradient>
-          </defs>
-          {/* hood */}
-          <path
-            d="M60 22 C28 22 18 60 22 100 C24 130 36 150 60 158 C84 150 96 130 98 100 C102 60 92 22 60 22 Z"
-            fill="url(#hoodGrad)"
-          />
-          {/* face shadow */}
-          <ellipse cx="60" cy="62" rx="22" ry="26" fill="url(#faceGrad)" />
-          {/* red eye glows */}
-          <circle cx="52" cy="62" r="2.4" fill="#ff3030" opacity="0.95">
-            <animate
-              attributeName="opacity"
-              values="0.6;1;0.6"
-              dur="2.6s"
-              repeatCount="indefinite"
+        <div className="profile-portrait-shell">
+          <div className="profile-portrait-shell__skull" aria-hidden>
+            <SkullOrnament />
+          </div>
+          <div className="profile-portrait-shell__frame">
+            <Image
+              src={profile.portraitSrc}
+              alt={profile.portraitAlt}
+              fill
+              sizes="(max-width: 640px) 100vw, 228px"
+              className="object-cover object-top"
+              priority
             />
-          </circle>
-          <circle cx="68" cy="62" r="2.4" fill="#ff3030" opacity="0.95">
-            <animate
-              attributeName="opacity"
-              values="1;0.6;1"
-              dur="2.6s"
-              repeatCount="indefinite"
+            <div
+              className="pointer-events-none absolute inset-0 mix-blend-overlay opacity-35"
+              aria-hidden
+              style={{
+                background:
+                  "repeating-linear-gradient(to bottom, rgba(255,255,255,0.04) 0 1px, transparent 1px 3px)",
+              }}
             />
-          </circle>
-          {/* mouth grill */}
-          <rect x="50" y="72" width="20" height="6" fill="#0a0a0b" stroke="#3a2a20" />
-          <line x1="54" y1="72" x2="54" y2="78" stroke="#1a1a1a" />
-          <line x1="58" y1="72" x2="58" y2="78" stroke="#1a1a1a" />
-          <line x1="62" y1="72" x2="62" y2="78" stroke="#1a1a1a" />
-          <line x1="66" y1="72" x2="66" y2="78" stroke="#1a1a1a" />
-          {/* shoulders */}
-          <path
-            d="M14 130 C30 110 90 110 106 130 L106 160 L14 160 Z"
-            fill="#2a1c14"
-            stroke="#3a2a20"
-          />
-        </svg>
-        {/* scanlines */}
-        <div
-          aria-hidden
-          className="absolute inset-0 pointer-events-none mix-blend-overlay opacity-40"
-          style={{
-            background:
-              "repeating-linear-gradient(to bottom, rgba(255,255,255,0.05) 0 1px, transparent 1px 3px)",
-          }}
-        />
+          </div>
         </div>
       </motion.div>
 
       {/* DATOS */}
       <div className="flex-1 min-w-0 flex flex-col">
-        <dl className="text-[0.78rem] font-mono space-y-2.5">
+        <dl className="text-[0.78rem] font-mono space-y-2.5 text-[var(--text-color,#ead9cc)]">
           <Field label="Nombre" value={profile.name} />
           <Field label="Rango" value={`${profile.rank}\n${profile.rankSub}`} />
           <Field label="Especialidad" value={profile.specialization} />
@@ -111,22 +56,43 @@ export default function ProfileCard() {
           <Field label="Motivación" value={profile.motivation} />
         </dl>
 
-        {/* COMANDO DEL DIA */}
+        {/* COMANDO DEL DÍA — borde verde terminal (mockup) */}
         <div className="mt-auto pt-4">
-          <div className="border border-panel-border rounded-sm bg-[#0a0a0b]/70 p-3 relative">
-            <div className="absolute -top-2 left-3 px-2 bg-[#0a0a0b] text-[0.6rem] font-mono tracking-[0.22em] uppercase text-accent-red-glow">
-              &gt; Comando del Día
-            </div>
-            <div className="text-[0.74rem] font-mono italic text-text-primary leading-relaxed space-y-0.5 mt-1">
+          <div className="command-of-day-box">
+            <div className="command-of-day-box__label">&gt; Comando del Día</div>
+            <div className="command-of-day-box__body">
               {profile.commandOfTheDay.map((line, i) => (
                 <p key={i}>&ldquo;{line}&rdquo;</p>
               ))}
             </div>
-            <div className="text-right mt-1.5 text-accent-red-glow text-sm">⚜</div>
+            <div className="command-of-day-box__footer">⚜</div>
           </div>
         </div>
       </div>
     </div>
+  );
+}
+
+function SkullOrnament() {
+  return (
+    <svg viewBox="0 0 40 22" className="w-[52px] h-7 drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+      <defs>
+        <linearGradient id="skg" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#d4a96a" />
+          <stop offset="55%" stopColor="#8b5a2b" />
+          <stop offset="100%" stopColor="#3a2818" />
+        </linearGradient>
+      </defs>
+      <ellipse cx="20" cy="11" rx="11" ry="9" fill="url(#skg)" stroke="#1a0f06" strokeWidth="0.5" />
+      <rect x="14" y="14" width="12" height="5" fill="url(#skg)" stroke="#1a0f06" strokeWidth="0.4" />
+      <circle cx="16" cy="10" r="1.4" fill="#0a0703" />
+      <circle cx="24" cy="10" r="1.4" fill="#0a0703" />
+      <line x1="14" y1="17" x2="26" y2="17" stroke="#0a0703" strokeWidth="0.6" />
+      <line x1="17" y1="15" x2="17" y2="19" stroke="#0a0703" strokeWidth="0.35" />
+      <line x1="20" y1="15" x2="20" y2="19" stroke="#0a0703" strokeWidth="0.35" />
+      <line x1="23" y1="15" x2="23" y2="19" stroke="#0a0703" strokeWidth="0.35" />
+      <circle cx="20" cy="3" r="1.8" fill="#6a1010" opacity="0.9" />
+    </svg>
   );
 }
 
@@ -137,14 +103,14 @@ function Field({
 }: {
   label: string;
   value: string;
-  suffix?: React.ReactNode;
+  suffix?: ReactNode;
 }) {
   return (
     <div className="flex items-start gap-3">
       <dt className="w-24 shrink-0 text-text-muted tracking-[0.16em] uppercase text-[0.62rem] pt-0.5">
         {label}:
       </dt>
-      <dd className="text-text-primary whitespace-pre-line leading-snug flex-1">
+      <dd className="whitespace-pre-line leading-snug flex-1 opacity-95">
         {value}
         {suffix}
       </dd>

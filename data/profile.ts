@@ -1,5 +1,8 @@
 export interface Profile {
   name: string;
+  /** Imagen de perfil en `public/` (p. ej. `/assets/profile/technoadepto.png`) */
+  portraitSrc: string;
+  portraitAlt: string;
   rank: string;
   rankSub: string;
   specialization: string;
@@ -16,6 +19,8 @@ export interface Profile {
 
 export const profile: Profile = {
   name: "Jairo",
+  portraitSrc: "/assets/profile/technoadepto.png",
+  portraitAlt: "Jairo — Tecno-Adepto, Adeptus Mechanicus",
   rank: "Ingeniero en Sistemas",
   rankSub: "(Explorator Novus)",
   specialization: "IoT, Automatización,\nBackend, Cloud, Integración de Sistemas",

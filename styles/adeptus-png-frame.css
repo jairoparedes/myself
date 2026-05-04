@@ -1,0 +1,214 @@
+/**
+ * Marco 9-slice con PNG (mismo enfoque que marcos_personalizados).
+ * Assets: /public/assets/adeptus_mechanicus/
+ */
+
+.adeptus-png-panel.frame {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  vertical-align: top;
+  padding: var(--frame-padding, 40px);
+  min-height: var(--frame-min-height, 0);
+  height: var(--frame-height, auto);
+  aspect-ratio: var(--frame-aspect-ratio, auto);
+
+  background: var(--frame-bg, #111);
+  background-size: var(--frame-bg-size, cover);
+  background-position: var(--frame-bg-position, center);
+  background-repeat: var(--frame-bg-repeat, no-repeat);
+
+  --corner-w: var(--frame-corner-size, 60px);
+  --corner-h: var(--frame-corner-size, 60px);
+  --edge-t-h: var(--frame-edge-top-height, 48px);
+  --edge-b-h: var(--frame-edge-bottom-height, 48px);
+  --edge-l-w: var(--frame-edge-left-width, 48px);
+  --edge-r-w: var(--frame-edge-right-width, 48px);
+
+  /* Valores base (sinc con marcos: variante adeptus-pack) */
+  --frame-padding: clamp(40px, 5.5vw, 88px);
+  --frame-corner-size: 60px;
+  --frame-edge-top-height: 48px;
+  --frame-edge-bottom-height: 48px;
+  --frame-edge-left-width: 48px;
+  --frame-edge-right-width: 48px;
+
+  --frame-bg: url("/assets/adeptus_mechanicus/texture.png");
+  --frame-bg-size: 240px 240px;
+  --frame-bg-position: 0 0;
+  --frame-bg-repeat: repeat;
+  --text-color: #ead9cc;
+
+  --corner-tl: url("/assets/adeptus_mechanicus/corner_top_left_w40k_sutil.png");
+  --corner-tr: url("/assets/adeptus_mechanicus/corner_top_right_w40k_sutil.png");
+  --corner-bl: url("/assets/adeptus_mechanicus/corner_bottom_left_w40k_sutil.png");
+  --corner-br: url("/assets/adeptus_mechanicus/corner_bottom_right_w40k_sutil.png");
+  --edge-top: url("/assets/adeptus_mechanicus/edge_top_w40k.png");
+  --edge-bottom: url("/assets/adeptus_mechanicus/edge_bottom_w40k.png");
+  --edge-left: url("/assets/adeptus_mechanicus/edge_left_w40k.png");
+  --edge-right: url("/assets/adeptus_mechanicus/edge_right_w40k.png");
+
+  --overlay:
+    radial-gradient(ellipse 85% 65% at 50% 35%, rgba(220, 80, 40, 0.07), transparent 55%),
+    linear-gradient(180deg, rgba(0, 0, 0, 0.28) 0%, transparent 40%, transparent 60%, rgba(0, 0, 0, 0.22) 100%);
+  --overlay-blend-mode: normal;
+  --overlay-opacity: 1;
+}
+
+.adeptus-png-panel.frame .frame__layer--border {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    var(--corner-tl, none) top left / var(--corner-w) var(--corner-h) no-repeat,
+    var(--corner-tr, none) top right / var(--corner-w) var(--corner-h) no-repeat,
+    var(--corner-bl, none) bottom left / var(--corner-w) var(--corner-h) no-repeat,
+    var(--corner-br, none) bottom right / var(--corner-w) var(--corner-h) no-repeat,
+    var(--edge-top, none) top / auto var(--edge-t-h) repeat-x,
+    var(--edge-bottom, none) bottom / auto var(--edge-b-h) repeat-x,
+    var(--edge-left, none) left / var(--edge-l-w) auto repeat-y,
+    var(--edge-right, none) right / var(--edge-r-w) auto repeat-y;
+}
+
+.adeptus-png-panel.frame .frame__layer--overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: var(--overlay, none);
+  mix-blend-mode: var(--overlay-blend-mode, normal);
+  opacity: var(--overlay-opacity, 1);
+}
+
+.adeptus-png-panel.frame .frame__content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  min-height: var(--content-min-height, 0);
+  color: var(--text-color, #ead9cc);
+  font-family: var(--frame-font, "JetBrains Mono", ui-monospace, monospace);
+}
+
+.adeptus-png-panel.frame .frame__content * {
+  box-sizing: border-box;
+}
+
+/* Títulos: reutiliza el look del theme sin el fondo .tech-panel */
+.adeptus-png-panel .tech-panel__header {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-bottom: 0.65rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px dashed rgba(234, 217, 204, 0.18);
+  font-family: "Orbitron", system-ui, sans-serif;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: clamp(0.72rem, 1.8vw, 0.84rem);
+  color: #c91a1a;
+  text-shadow: 0 0 8px rgba(201, 26, 26, 0.35);
+}
+
+.adeptus-png-panel__header--centered span {
+  text-align: center;
+  flex: 1;
+}
+
+/* Marco compacto para filas densas */
+.adeptus-png-panel--compact.frame {
+  --frame-padding: clamp(22px, 3.2vw, 40px);
+  --frame-corner-size: 44px;
+  --frame-edge-top-height: 36px;
+  --frame-edge-bottom-height: 36px;
+  --frame-edge-left-width: 36px;
+  --frame-edge-right-width: 36px;
+}
+
+/* Retrato del Tecno-Adepto — borde bronce + cráneo encima */
+.profile-portrait-shell {
+  position: relative;
+  width: 100%;
+  max-width: 228px;
+  padding-top: 10px;
+}
+
+.profile-portrait-shell__skull {
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  pointer-events: none;
+}
+
+.profile-portrait-shell__frame {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  width: 100%;
+  border-radius: 4px;
+  border: 3px solid #6a4520;
+  box-shadow:
+    inset 0 0 0 1px rgba(212, 169, 106, 0.35),
+    inset 0 0 40px rgba(0, 0, 0, 0.65),
+    0 0 0 2px #1a0a08,
+    0 8px 24px rgba(0, 0, 0, 0.85);
+  background: #0a0806;
+  overflow: hidden;
+}
+
+.profile-portrait-shell__frame img {
+  filter: saturate(0.95) contrast(1.05);
+}
+
+/* Caja “Comando del Día” estilo terminal verde */
+.command-of-day-box {
+  position: relative;
+  border: 1px solid rgba(0, 255, 159, 0.45);
+  border-radius: 2px;
+  background: linear-gradient(180deg, rgba(0, 20, 12, 0.92), rgba(0, 8, 6, 0.96));
+  box-shadow:
+    inset 0 0 20px rgba(0, 255, 159, 0.06),
+    0 0 12px rgba(0, 255, 159, 0.08);
+  padding: 1.1rem 0.85rem 0.65rem;
+}
+
+.command-of-day-box__label {
+  position: absolute;
+  top: -0.55rem;
+  left: 0.65rem;
+  padding: 0 0.45rem;
+  background: #050807;
+  font-size: 0.58rem;
+  font-family: "JetBrains Mono", monospace;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #00ff9f;
+}
+
+.command-of-day-box__body {
+  margin-top: 0.15rem;
+  font-size: 0.74rem;
+  font-family: "JetBrains Mono", monospace;
+  font-style: italic;
+  line-height: 1.55;
+  color: #00ff9f;
+  text-shadow: 0 0 6px rgba(0, 255, 159, 0.25);
+}
+
+.command-of-day-box__body p + p {
+  margin-top: 0.35rem;
+}
+
+.command-of-day-box__footer {
+  text-align: right;
+  margin-top: 0.35rem;
+  font-size: 0.85rem;
+  color: #c91a1a;
+  opacity: 0.9;
+}

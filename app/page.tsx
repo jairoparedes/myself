@@ -6,7 +6,7 @@ import Sidebar from "@/components/layout/Sidebar";
 import TopBar from "@/components/layout/TopBar";
 import FooterBar from "@/components/layout/FooterBar";
 
-import TechPanel from "@/components/ui/TechPanel";
+import AdeptusPngPanel from "@/components/ui/AdeptusPngPanel";
 
 import SkillBar from "@/components/hud/SkillBar";
 
@@ -35,23 +35,21 @@ export default function Page() {
               hidden: {},
               visible: { transition: { staggerChildren: 0.06 } },
             }}
-            className="flex flex-col gap-4 max-w-[1500px] mx-auto"
+            className="flex flex-col gap-4 max-w-[1600px] mx-auto w-full"
           >
             {/* TOP ROW :: PERFIL + HABILIDADES */}
-            <div className="grid grid-cols-1 xl:grid-cols-[1.35fr_1fr] gap-4">
-              <TechPanel
+            <div className="grid grid-cols-1 xl:grid-cols-[1.45fr_1fr] gap-4 xl:gap-5">
+              <AdeptusPngPanel
                 title="Perfil del Tecno-Adepto"
                 centerTitle
-                variant="imperial"
                 delay={0.05}
               >
                 <ProfileCard />
-              </TechPanel>
+              </AdeptusPngPanel>
 
-              <TechPanel
+              <AdeptusPngPanel
                 title="Habilidades del Adepto"
                 centerTitle
-                variant="tech-priest"
                 delay={0.12}
               >
                 <div className="flex flex-col">
@@ -76,51 +74,54 @@ export default function Page() {
                     </span>
                   </div>
                 </div>
-              </TechPanel>
+              </AdeptusPngPanel>
             </div>
 
             {/* MIDDLE ROW :: MISIONES */}
-            <TechPanel
+            <AdeptusPngPanel
               title="Misiones Principales"
               centerTitle
-              variant="tech-priest"
               delay={0.18}
             >
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
                 {missions.map((m, i) => (
-                  <MissionCard key={m.id} mission={m} index={i} />
+                  <AdeptusPngPanel
+                    key={m.id}
+                    compact
+                    delay={0.19 + i * 0.04}
+                    bodyClassName="h-full flex flex-col"
+                  >
+                    <MissionCard mission={m} index={i} />
+                  </AdeptusPngPanel>
                 ))}
               </div>
-            </TechPanel>
+            </AdeptusPngPanel>
 
             {/* BOTTOM ROW :: TERMINAL + ARSENAL + LOGROS */}
-            <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr_1.2fr] gap-4">
-              <TechPanel
+            <div className="grid grid-cols-1 lg:grid-cols-[1.35fr_1fr_1.15fr] gap-4 xl:gap-5">
+              <AdeptusPngPanel
                 title="Registro del Tecno-Adepto"
                 centerTitle
-                variant="necron"
                 delay={0.25}
               >
                 <TerminalLog />
-              </TechPanel>
+              </AdeptusPngPanel>
 
-              <TechPanel
+              <AdeptusPngPanel
                 title="Arsenal Tecnológico"
                 centerTitle
-                variant="ultramarines"
                 delay={0.3}
               >
                 <ArsenalGrid />
-              </TechPanel>
+              </AdeptusPngPanel>
 
-              <TechPanel
+              <AdeptusPngPanel
                 title="Logros del Adepto"
                 centerTitle
-                variant="blood-angels"
                 delay={0.35}
               >
                 <AchievementsPanel />
-              </TechPanel>
+              </AdeptusPngPanel>
             </div>
           </motion.div>
         </main>
